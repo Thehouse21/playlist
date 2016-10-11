@@ -5,3 +5,8 @@ This simple script will generate a M3U playlist out of a specified folder contai
 and add an URL to the path, so you can use the Playlist in conjunction with a Web Server as a simple Media Streaming System.
 All files will be scanned by ffprobe to obtain media duration, so please make sure it is installed on your system.
 On each run, the script will delete the previously generated Playlist file and replace with a new one.
+
+Setup and Installation:
+
+Download the script and edit it to your needs with your prefered text editor. 
+Please read the options carefully, as they might lead to unwanted operations.
