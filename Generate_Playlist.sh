@@ -19,13 +19,13 @@ URL=https://www.example.com/media/
 
 ## Uncomment if you would like to replace all spaces in the filenames by underscore, so streaming via http is possible.
 ## ATTENTION: This will rename ALL files in the folder (excluding subfolders)
-find $videopath/ -depth -name "* *" -execdir rename 's/ /_/g' "{}" \;
+#find $videopath/ -depth -name "* *" -execdir rename 's/ /_/g' "{}" \;
 
 ## Specify your webservers User and Group. (user:group) You can find out by running ls -l in your www folder.
 RIGHTS=web1:client1
 
 ## Uncomment if you would like to change ownership of the files to match webservers User and Group.
-chown $RIGHTS $videopath
+#chown $RIGHTS $videopath
 
 
 
