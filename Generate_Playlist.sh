@@ -11,6 +11,9 @@
 # Setup #
 #########
 
+## Name of generated playlist
+M3Uname=Playlist.m3u
+
 ## Please specify the folder you would like to scan. Don't add final /. (e.g. /var/www/media )
 videopath=/var/www/media
 
@@ -34,13 +37,13 @@ RIGHTS=www:www
 ########
 
 # Removing old M3U Playlist
-rm -f $videopath/liste.m3u
+rm -f $videopath/$M3Uname
 
 # Generate M3U Playlist by scanning media files and extracting duration with ffprobe.
-for f in $videopath/*.m* $videopath/*.avi; do length=`ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 $f | rev | cut -c8- | rev`; datei=`ls $f | xargs -n 1 basename | rev | cut -c5- | rev | sed -r 's/_/ /g'`; dateisauber=`ls $f | xargs -n 1 basename`; dateimitpfad=$URL$dateisauber; echo -e "#EXTINF:$length,$datei\n$dateimitpfad" >> $videopath/liste.m3u; done
+for f in $videopath/*.m* $videopath/*.avi; do length=`ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 $f | rev | cut -c8- | rev`; datei=`ls $f | xargs -n 1 basename | rev | cut -c5- | rev | sed -r 's/_/ /g'`; dateisauber=`ls $f | xargs -n 1 basename`; dateimitpfad=$URL$dateisauber; echo -e "#EXTINF:$length,$datei\n$dateimitpfad" >> $videopath/$M3Uname; done
 
 # Add necessary line to M3U Playlist.
-sed -i '1i#EXTM3U' $videopath/liste.m3u
+sed -i '1i#EXTM3U' $videopath/$M3Uname
 
 # Change ownership of Playlist to match http user. Uncomment if not needed.
-chown $RIGHTS $videopath/liste.m3u
+chown $RIGHTS $videopath/$M3Uname
