@@ -22,7 +22,7 @@ URL=https://www.example.com/media/
 #find $videopath/ -depth -name "* *" -execdir rename 's/ /_/g' "{}" \;
 
 ## Specify your webservers User and Group. (user:group) You can find out by running ls -l in your www folder.
-RIGHTS=web1:client1
+RIGHTS=www:www
 
 ## Uncomment if you would like to change ownership of the files to match webservers User and Group.
 #chown $RIGHTS $videopath
